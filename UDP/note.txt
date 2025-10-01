@@ -1,11 +1,19 @@
+========Chung===========
 -UDP kết noi qua DatagramSocket
 -Nhan packet DatagramPacket(buffer, buffer.length)
 -Gui packet Datagram(buffer, buffer.length, svAddress, port);
 
+-login co dang ";studentCode;qCode"
+-Cau b auto nhan mang byte "requestId;data"
+-Chuyen recvPacket sang string
+    String rectString = new String(recvpacket.getData(), 0, recvPacket.getLenght())
+
 ====read object====
+-Sau khi nhan recvPacket can tach requestIdByte bang cach
+    byte[] requestIdByte = Arrays.copyOfRange(recvData, 0, 8);
 -Class phu can implement Serialiable va co serialVersionUID thi moi doc dc Object tu server
--Dung bais doc array buffer nhan duoc tu server
-    ByteArrayInputStream bais = new ByteArrayInputStream(buffer, offset, length)
+-Sau khi tach duoc requestID dung bais doc phan con lai cua recvData de lay ra Object
+    ByteArrayInputStream bais = new ByteArrayInputStream(recvData, 8, recvPacket.getLength() - 8)
 -Sau do dung ObjectInputStream boc bais de doc object
     ObjectInputStream ois = new ObjectInputStream(bais)
 -Sau do ep kieu ve object mong muon
