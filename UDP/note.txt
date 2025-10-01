@@ -1,0 +1,22 @@
+-UDP kết noi qua DatagramSocket
+-Nhan packet DatagramPacket(buffer, buffer.length)
+-Gui packet Datagram(buffer, buffer.length, svAddress, port);
+
+====read object====
+-Class phu can implement Serialiable va co serialVersionUID thi moi doc dc Object tu server
+-Dung bais doc array buffer nhan duoc tu server
+    ByteArrayInputStream bais = new ByteArrayInputStream(buffer, offset, length)
+-Sau do dung ObjectInputStream boc bais de doc object
+    ObjectInputStream ois = new ObjectInputStream(bais)
+-Sau do ep kieu ve object mong muon
+    Student st = (Student) ois.readObject()
+
+=====write object=====
+-Khoi tao 1 baos roi ghi requestIdByte vao buffer luon
+    ByteArrayOutputStream baos = new ByteArrayOutputStream()
+    baos.write(requestIdByte)
+-Khoi tao 1 oos roi ghi Object vao buffer, sau do phai dung flush
+    ObjectOutputStream oos = new ObjectOutputStream()
+    oos.writeObject()
+    oos.flush()
+-Luu y phai baos.write truoc moi khoi tao oos
